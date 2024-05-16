@@ -2,7 +2,6 @@
 version: '3'
 services:
   frontend:
-    image: devcloud/front
-    build: ../front
+    image: ghcr.io/lucaribou/m2a-front:${IMAGE_TAG}
     ports:
       - 8080:80

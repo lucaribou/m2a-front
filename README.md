@@ -8,3 +8,6 @@
 # Dev via Podman
 - `podman build -t frontdev -f Containerfile.dev`
 - `podman run -p 5173:5173 -v .:/app -it -d frontdev`
+
+# .env file
+- have an `.env` file in the root of the repo, you can copy `.env.example` and adapt it
