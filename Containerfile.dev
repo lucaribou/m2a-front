@@ -1,0 +1,6 @@
+# Dockerfile
+FROM docker.io/node:18 as build
+
+WORKDIR /app
+
+CMD ["npm", "run", "dev"]
