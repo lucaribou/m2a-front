@@ -4,4 +4,4 @@ services:
   frontend:
     image: ghcr.io/lucaribou/m2a-front:${IMAGE_TAG}
     ports:
-      - 8080:80
+      - 80:80
