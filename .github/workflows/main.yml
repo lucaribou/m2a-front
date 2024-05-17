@@ -54,10 +54,12 @@ jobs:
       contents: read
       packages: read
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
       - name: create env file
         run: |
           touch .env
-          echo IMAGE_TAG=${{ github.event.release.tag_name }} >> .env
+          echo IMAGE_TAG=${{ github.ref_name }} >> .env
       - name: copy files via ssh key
         uses: appleboy/scp-action@v0.1.7
         with:
