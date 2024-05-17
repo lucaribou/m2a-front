@@ -60,8 +60,8 @@ jobs:
         run: |
           touch .env
           echo IMAGE_TAG=${{ github.ref_name }} >> .env
-          echo BACKEND_HOST=${{ vars.backend_host }} >> .env
-          echo BACKEND_PORT=${{ vars.backend_port }} >> .env
+          echo VITE_BACKEND_HOST=${{ vars.backend_host }} >> .env
+          echo VITE_BACKEND_PORT=${{ vars.backend_port }} >> .env
       - name: copy files via ssh key
         uses: appleboy/scp-action@v0.1.7
         with:
