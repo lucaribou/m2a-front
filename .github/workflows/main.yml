@@ -48,18 +48,23 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
   deploy:
+    needs: build-and-push-image
     runs-on: ubuntu-latest
     permissions:
       contents: read
       packages: read
     steps:
+      - name: create env file
+        run: |
+          touch .env
+          echo IMAGE_TAG=${{ github.event.release.tag_name }} >> .env
       - name: copy files via ssh key
         uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.VM_HOST }}
           username: ${{ secrets.VM_USERNAME }}
           key: ${{ secrets.SSH_KEY_PRIVATE }}
-          source: "docker-compose.yml"
+          source: "docker-compose.yml,.env"
           target: /home/${{ secrets.VM_USERNAME }}/
       - name: executing remote ssh commands
         uses: appleboy/ssh-action@v1.0.3
