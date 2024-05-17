@@ -5,3 +5,6 @@ services:
     image: ghcr.io/lucaribou/m2a-front:${IMAGE_TAG}
     ports:
       - 80:80
+    env:
+      - VITE_BACKEND_HOST=${BACKEND_HOST}
+      - VITE_BACKEND_PORT=${BACKEND_PORT}
