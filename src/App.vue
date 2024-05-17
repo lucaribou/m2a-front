@@ -47,7 +47,7 @@ fetchFile();
 <template>
   <div>
     <input type="file" @change="uploadFile" />
-    <button @click="submitFile">Submit
+    <button @click="submitFile">Submit File
     </button>
   </div>
   <div v-for="f in listFiles" :key="f">
