@@ -4,7 +4,7 @@ metadata:
   name: secret-dockercfg
 type: kubernetes.io/dockercfg
 stringData:
-  .dockerconfigjson: >-
+  .dockercfg: >-
     {
       "auths": {
         "ghcr.io": {
