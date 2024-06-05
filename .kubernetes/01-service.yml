@@ -20,6 +20,8 @@ spec:
         image: $image_name
         ports:
         - containerPort: 80
+      imagePullSecrets:
+        - name: ghcr-login-secret
 ---
 apiVersion: v1
 kind: Service
