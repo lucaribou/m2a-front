@@ -90,7 +90,8 @@ jobs:
           echo "image_name=${{ env.REGISTRY }}/${{ env.REPOSITORY_NAME }}:${{ github.ref_name }}" >> $GITHUB_ENV
           
       - name: Render k8s manifests
-        run: envsubst < .kubernetes/01-service.yml
+        run: envsubst < .kubernetes/01-service.yml > .kubernetes/01-service.tmp && mv .kubernetes/01-service.tmp .kubernetes/01-service.yml
+
 
       # Deploys application based on given manifest file
       - name: Deploys application
