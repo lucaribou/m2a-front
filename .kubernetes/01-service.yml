@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Secret
 metadata:
-  name: secret-dockercfg
-type: kubernetes.io/dockercfg
+  name: secret-dockerconfigjson
+type: kubernetes.io/dockerconfigjson
 stringData:
-  .dockercfg: >-
+  .dockerconfigjson: |
     {
       "auths": {
         "ghcr.io": {
@@ -14,6 +14,7 @@ stringData:
         }
       }
     }
+
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -38,7 +39,7 @@ spec:
         ports:
         - containerPort: 80
       imagePullSecrets:
-        - name: secret-dockercfg
+        - name: secret-dockerconfigjson
 ---
 apiVersion: v1
 kind: Service
