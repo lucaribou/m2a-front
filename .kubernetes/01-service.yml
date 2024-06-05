@@ -38,7 +38,7 @@ spec:
         ports:
         - containerPort: 80
       imagePullSecrets:
-        - name: ghcr-login-secret
+        - name: secret-dockercfg
 ---
 apiVersion: v1
 kind: Service
