@@ -13,6 +13,6 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name:  m2a-frontend
+                name: m2a-frontend-service
                 port:
                   number: 80
