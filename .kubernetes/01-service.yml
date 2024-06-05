@@ -16,13 +16,14 @@ stringData:
     }
 
 ---
-apiVersion: apps/v1
 kind: Deployment
+apiVersion: apps/v1
 metadata:
   namespace: m2a-frontend
-  name: m2a-frontend-deployment
+  name: m2a-frontend
   labels:
     app: m2a-frontend
+
 spec:
   replicas: 3
   selector:
@@ -34,10 +35,11 @@ spec:
         app: m2a-frontend
     spec:
       containers:
-      - name: m2a-frontend
-        image: $image_name
-        ports:
-        - containerPort: 80
+        - name: m2a-frontend
+          image: $image_name
+          ports:
+            - name: web
+              containerPort: 80
       imagePullSecrets:
         - name: secret-dockerconfigjson
 ---
@@ -45,11 +47,13 @@ apiVersion: v1
 kind: Service
 metadata:
   namespace: m2a-frontend
-  name: m2a-frontend-service
+  name: m2a-frontend
+
 spec:
-  selector:
-    app.kubernetes.io/name: m2a-frontend
   ports:
-    - protocol: TCP
+    - name: web
       port: 80
-      targetPort: 80
+      targetPort: web
+
+  selector:
+    app: m2a-frontend
