@@ -94,6 +94,7 @@ jobs:
           echo "docker_password=${{ secrets.REGISTRY_TOKEN }}" >> $GITHUB_ENV
           echo "docker_email=${{ secrets.REGISTRY_USER_EMAIL }}" >> $GITHUB_ENV
           echo "backend_host=${{ vars.BACKEND_HOST }}" >> $GITHUB_ENV
+          echo "backend_host=${{ vars.BACKEND_HOST }}"
           echo "backend_port=${{ vars.BACKEND_PORT }}" >> $GITHUB_ENV
           
       - name: Render k8s manifests
