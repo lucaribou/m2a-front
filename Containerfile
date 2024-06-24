@@ -9,5 +9,8 @@ RUN npm install
 COPY . .
 RUN npm run build
 
+ENV VITE_BACKEND_HOST=$VITE_BACKEND_HOST
+ENV VITE_BACKEND_PORT=$VITE_BACKEND_PORT
+
 FROM docker.io/nginx:1.25.5-alpine as production
 COPY --from=build /app/dist /usr/share/nginx/html
