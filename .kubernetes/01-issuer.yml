@@ -6,7 +6,6 @@ metadata:
 spec:
  acme:
    email: lucas.saissi@gmail.com
-   # We use the staging server here for testing to avoid hitting
    server: https://acme-v02.api.letsencrypt.org/directory
    privateKeySecretRef:
      # if not existing, it will register a new account and stores it
