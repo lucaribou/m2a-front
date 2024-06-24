@@ -50,9 +50,6 @@ jobs:
           file: ./Containerfile
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-          build-args: 
-            VITE_BACKEND_HOST=${{ vars.BACKEND_HOST }}
-            VITE_BACKEND_PORT=${{ vars.BACKEND_PORT }}
 
   deploy:
     environment: 
@@ -96,10 +93,11 @@ jobs:
           echo "docker_username=${{ secrets.REGISTRY_USERNAME }}" >> $GITHUB_ENV
           echo "docker_password=${{ secrets.REGISTRY_TOKEN }}" >> $GITHUB_ENV
           echo "docker_email=${{ secrets.REGISTRY_USER_EMAIL }}" >> $GITHUB_ENV
+          echo "backend_host=${{ vars.BACKEND_HOST }}" >> $GITHUB_ENV
+          echo "backend_port=${{ vars.BACKEND_PORT }}" >> $GITHUB_ENV
           
       - name: Render k8s manifests
         run: envsubst < .kubernetes/01-service.yml > .kubernetes/01-service.tmp && mv .kubernetes/01-service.tmp .kubernetes/01-service.yml
-
 
       # Deploys application based on given manifest file
       - name: Deploys application
