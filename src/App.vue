@@ -19,7 +19,7 @@ const submitFile = async () => {
     const formData = new FormData();
     formData.append("file", file.value);
     try {
-      const res = await axios.post(`${import.meta.env.VITE_BACKEND_HOST}:${import.meta.env.VITE_BACKEND_PORT}/upload`, formData);
+      const res = await axios.post(`${import.meta.env.VITE_BACKEND_HOST}/upload`, formData);
       console.log(res.data);
       if(res.data){
         fetchFile();
@@ -32,7 +32,7 @@ const submitFile = async () => {
 
 const fetchFile = async () => {
   try {
-    const res = await axios.get(`${import.meta.env.VITE_BACKEND_HOST}:${import.meta.env.VITE_BACKEND_PORT}/files`);
+    const res = await axios.get(`${import.meta.env.VITE_BACKEND_HOST}/files`);
     console.log(res.data);
     listFiles.value = res.data;
   } catch (error) {
