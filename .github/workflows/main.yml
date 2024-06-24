@@ -50,9 +50,6 @@ jobs:
           file: ./Containerfile
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-          build-args: 
-            VITE_BACKEND_HOST=${{ vars.BACKEND_HOST }}
-            VITE_BACKEND_PORT=${{ vars.BACKEND_PORT }}
 
   deploy:
     environment: 
