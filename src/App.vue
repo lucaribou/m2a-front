@@ -41,7 +41,6 @@ const fetchFile = async () => {
 };
 
 fetchFile();
-console.log("ALLO :" + `${import.meta.env.VITE_BACKEND_HOST}`)
 
 </script>
 
