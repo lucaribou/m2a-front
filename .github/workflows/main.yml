@@ -50,6 +50,9 @@ jobs:
           file: ./Containerfile
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+          build-args: 
+            BACKEND_HOST=${{ vars.BACKEND_HOST }}
+
   deploy:
     environment: 
       name: production
