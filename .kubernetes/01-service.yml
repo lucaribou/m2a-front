@@ -40,11 +40,6 @@ spec:
           ports:
             - name: web
               containerPort: 80
-          env:
-          - name: VITE_BACKEND_HOST
-            value: "$backend_host"
-          - name: VITE_BACKEND_PORT
-            value: "$backend_port"
 
       imagePullSecrets:
         - name: secret-dockerconfigjson
